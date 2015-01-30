@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    DBLP XML Records are available from
+    
+    http://dblp.uni-trier.de/xml/
+    
+    DBLP: Copyright 1993-2011 by Michael Ley (Universität Trier, Informatik, ley@uni-trier.de)
+    
+    The data provided by DBLP on its webpages as well as the XML files available at http://dblp.uni-trier.de/xml/
+    are released under the Open Data Commons Attribution License (ODC-BY 1.0). You are free to copy, distribute, use, modify,
+    transform, build upon and produce derived works from our data as long as you attribute any public use of the data, or works
+    produced from the data, in the manner specified in the license. Read the full ODC-BY 1.0 license text for the exact terms
+    that apply. The ODC-BY 1.0 license is courtesy of the Open Knowledge Foundation.  
+    
+    http://opendatacommons.org/licenses/by/1.0/
+    http://okfn.org/
+    
+    In the eyes of DBLP, a simple note refering to DBLP and/or a link back to http://dblp.uni-trier.de/ is sufficient to meet the
+    attribution criterion. Individual use of only a small number of records (such as a publication list of a few authors or the
+    table of content of a proceedings volume) does not need attribution. Of course, we are always happy if you link to us.
+    
+    publtype:
+    encyclopedia entry
+    informal publication
+    survey
+-->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+    <define name="dblp">
+        <element name="dblp">
+            <ref name="attlist.dblp"/>
+            <zeroOrMore>
+                <choice>
+                    <ref name="article"/>
+                    <ref name="inproceedings"/>
+                    <ref name="proceedings"/>
+                    <ref name="book"/>
+                    <ref name="incollection"/>
+                    <ref name="phdthesis"/>
+                    <ref name="mastersthesis"/>
+                    <ref name="www"/>
+                </choice>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.dblp" combine="interleave">
+        <empty/>
+    </define>
+    <define name="field">
+        <choice>
+            <ref name="author"/>
+            <ref name="editor"/>
+            <ref name="title"/>
+            <ref name="booktitle"/>
+            <ref name="pages"/>
+            <ref name="year"/>
+            <ref name="address"/>
+            <ref name="journal"/>
+            <ref name="volume"/>
+            <ref name="number"/>
+            <ref name="month"/>
+            <ref name="url"/>
+            <ref name="ee"/>
+            <ref name="cdrom"/>
+            <ref name="cite"/>
+            <ref name="publisher"/>
+            <ref name="note"/>
+            <ref name="crossref"/>
+            <ref name="isbn"/>
+            <ref name="series"/>
+            <ref name="school"/>
+            <ref name="chapter"/>
+        </choice>
+    </define>
+    <define name="article">
+        <element name="article">
+            <ref name="attlist.article"/>
+            <zeroOrMore>
+                <ref name="field"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.article" combine="interleave">
+        <attribute name="key"/>
+        <optional>
+            <attribute name="mdate"/>
+        </optional>
+        <optional>
+            <attribute name="publtype"/>
+        </optional>
+        <optional>
+            <attribute name="reviewid"/>
+        </optional>
+        <optional>
+            <attribute name="rating"/>
+        </optional>
+    </define>
+    <define name="inproceedings">
+        <element name="inproceedings">
+            <ref name="attlist.inproceedings"/>
+            <zeroOrMore>
+                <ref name="field"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.inproceedings" combine="interleave">
+        <attribute name="key"/>
+        <optional>
+            <attribute name="mdate"/>
+        </optional>
+        <optional>
+            <attribute name="publtype"/>
+        </optional>
+    </define>
+    <define name="proceedings">
+        <element name="proceedings">
+            <ref name="attlist.proceedings"/>
+            <zeroOrMore>
+                <ref name="field"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.proceedings" combine="interleave">
+        <attribute name="key"/>
+        <optional>
+            <attribute name="mdate"/>
+        </optional>
+        <optional>
+            <attribute name="publtype"/>
+        </optional>
+    </define>
+    <define name="book">
+        <element name="book">
+            <ref name="attlist.book"/>
+            <zeroOrMore>
+                <ref name="field"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.book" combine="interleave">
+        <attribute name="key"/>
+        <optional>
+            <attribute name="mdate"/>
+        </optional>
+        <optional>
+            <attribute name="publtype"/>
+        </optional>
+    </define>
+    <define name="incollection">
+        <element name="incollection">
+            <ref name="attlist.incollection"/>
+            <zeroOrMore>
+                <ref name="field"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.incollection" combine="interleave">
+        <attribute name="key"/>
+        <optional>
+            <attribute name="mdate"/>
+        </optional>
+        <optional>
+            <attribute name="publtype"/>
+        </optional>
+    </define>
+    <define name="phdthesis">
+        <element name="phdthesis">
+            <ref name="attlist.phdthesis"/>
+            <zeroOrMore>
+                <ref name="field"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.phdthesis" combine="interleave">
+        <attribute name="key"/>
+        <optional>
+            <attribute name="mdate"/>
+        </optional>
+        <optional>
+            <attribute name="publtype"/>
+        </optional>
+    </define>
+    <define name="mastersthesis">
+        <element name="mastersthesis">
+            <ref name="attlist.mastersthesis"/>
+            <zeroOrMore>
+                <ref name="field"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.mastersthesis" combine="interleave">
+        <attribute name="key"/>
+        <optional>
+            <attribute name="mdate"/>
+        </optional>
+        <optional>
+            <attribute name="publtype"/>
+        </optional>
+    </define>
+    <define name="www">
+        <element name="www">
+            <ref name="attlist.www"/>
+            <zeroOrMore>
+                <ref name="field"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.www" combine="interleave">
+        <attribute name="key"/>
+        <optional>
+            <attribute name="mdate"/>
+        </optional>
+        <optional>
+            <attribute name="publtype"/>
+        </optional>
+    </define>
+    <define name="author">
+        <element name="author">
+            <ref name="attlist.author"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.author" combine="interleave">
+        <optional>
+            <attribute name="bibtex"/>
+        </optional>
+    </define>
+    <define name="editor">
+        <element name="editor">
+            <ref name="attlist.editor"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.editor" combine="interleave">
+        <empty/>
+    </define>
+    <define name="address">
+        <element name="address">
+            <ref name="attlist.address"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.address" combine="interleave">
+        <empty/>
+    </define>
+    <define name="titlecontents">
+        <choice>
+            <text/>
+            <ref name="sub"/>
+            <ref name="sup"/>
+            <ref name="i"/>
+            <ref name="tt"/>
+            <ref name="ref"/>
+        </choice>
+    </define>
+    <define name="title">
+        <element name="title">
+            <ref name="attlist.title"/>
+            <zeroOrMore>
+                <ref name="titlecontents"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.title" combine="interleave">
+        <optional>
+            <attribute name="bibtex"/>
+        </optional>
+    </define>
+    <define name="booktitle">
+        <element name="booktitle">
+            <ref name="attlist.booktitle"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.booktitle" combine="interleave">
+        <empty/>
+    </define>
+    <define name="pages">
+        <element name="pages">
+            <ref name="attlist.pages"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.pages" combine="interleave">
+        <empty/>
+    </define>
+    <define name="year">
+        <element name="year">
+            <ref name="attlist.year"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.year" combine="interleave">
+        <empty/>
+    </define>
+    <define name="journal">
+        <element name="journal">
+            <ref name="attlist.journal"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.journal" combine="interleave">
+        <empty/>
+    </define>
+    <define name="volume">
+        <element name="volume">
+            <ref name="attlist.volume"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.volume" combine="interleave">
+        <empty/>
+    </define>
+    <define name="number">
+        <element name="number">
+            <ref name="attlist.number"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.number" combine="interleave">
+        <empty/>
+    </define>
+    <define name="month">
+        <element name="month">
+            <ref name="attlist.month"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.month" combine="interleave">
+        <empty/>
+    </define>
+    <define name="url">
+        <element name="url">
+            <ref name="attlist.url"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.url" combine="interleave">
+        <empty/>
+    </define>
+    <define name="ee">
+        <element name="ee">
+            <ref name="attlist.ee"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.ee" combine="interleave">
+        <empty/>
+    </define>
+    <define name="cite">
+        <element name="cite">
+            <ref name="attlist.cite"/>
+            <text/>
+        </element>
+    </define>
+    <define name="school">
+        <element name="school">
+            <ref name="attlist.school"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.school" combine="interleave">
+        <empty/>
+    </define>
+    <define name="publisher">
+        <element name="publisher">
+            <ref name="attlist.publisher"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.publisher" combine="interleave">
+        <optional>
+            <attribute name="href"/>
+        </optional>
+    </define>
+    <define name="note">
+        <element name="note">
+            <ref name="attlist.note"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.note" combine="interleave">
+        <optional>
+            <attribute name="type"/>
+        </optional>
+    </define>
+    <define name="cdrom">
+        <element name="cdrom">
+            <ref name="attlist.cdrom"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.cdrom" combine="interleave">
+        <empty/>
+    </define>
+    <define name="attlist.cite" combine="interleave">
+        <optional>
+            <attribute name="label"/>
+        </optional>
+    </define>
+    <define name="crossref">
+        <element name="crossref">
+            <ref name="attlist.crossref"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.crossref" combine="interleave">
+        <empty/>
+    </define>
+    <define name="isbn">
+        <element name="isbn">
+            <ref name="attlist.isbn"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.isbn" combine="interleave">
+        <empty/>
+    </define>
+    <define name="chapter">
+        <element name="chapter">
+            <ref name="attlist.chapter"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.chapter" combine="interleave">
+        <empty/>
+    </define>
+    <define name="series">
+        <element name="series">
+            <ref name="attlist.series"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.series" combine="interleave">
+        <optional>
+            <attribute name="href"/>
+        </optional>
+    </define>
+    <define name="layout">
+        <element name="layout">
+            <ref name="attlist.layout"/>
+            <ref name="any"/>
+        </element>
+    </define>
+    <define name="attlist.layout" combine="interleave">
+        <optional>
+            <attribute name="logo"/>
+        </optional>
+    </define>
+    <define name="ref">
+        <element name="ref">
+            <ref name="attlist.ref"/>
+            <text/>
+        </element>
+    </define>
+    <define name="attlist.ref" combine="interleave">
+        <attribute name="href"/>
+    </define>
+    <define name="sup">
+        <element name="sup">
+            <ref name="attlist.sup"/>
+            <zeroOrMore>
+                <ref name="titlecontents"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.sup" combine="interleave">
+        <empty/>
+    </define>
+    <define name="sub">
+        <element name="sub">
+            <ref name="attlist.sub"/>
+            <zeroOrMore>
+                <ref name="titlecontents"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.sub" combine="interleave">
+        <empty/>
+    </define>
+    <define name="i">
+        <element name="i">
+            <ref name="attlist.i"/>
+            <zeroOrMore>
+                <ref name="titlecontents"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.i" combine="interleave">
+        <empty/>
+    </define>
+    <define name="tt">
+        <element name="tt">
+            <ref name="attlist.tt"/>
+            <zeroOrMore>
+                <ref name="titlecontents"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attlist.tt" combine="interleave">
+        <empty/>
+    </define>
+    <start>
+        <choice>
+            <ref name="dblp"/>
+            <ref name="layout"/>
+        </choice>
+    </start>
+    <define name="any">
+        <zeroOrMore>
+            <choice>
+                <element>
+                    <anyName/>
+                    <zeroOrMore>
+                        <attribute>
+                            <anyName/>
+                        </attribute>
+                    </zeroOrMore>
+                    <ref name="any"/>
+                </element>
+                <text/>
+            </choice>
+        </zeroOrMore>
+    </define>
+</grammar>
+<!--
+    (C) International Organization for Standardization 1986
+    Permission to copy in any form is granted for use with
+    conforming SGML systems and applications as defined in
+    ISO 8879, provided this notice is included in all copies.
+-->
+<!--
+    Character entity set. Typical invocation:
+    <!ENTITY % HTMLlat1 PUBLIC
+      "ISO 8879-1986//ENTITIES Added Latin 1//EN//XML">
+-->
+<!--
+    This version of the entity set can be used with any SGML document
+    which uses ISO 8859-1 or ISO 10646 as its document character 
+    set. This includes XML documents and ISO HTML documents. 
+-->
+<!-- capital A, grave accent -->
+<!-- capital A, acute accent -->
+<!-- capital A, circumflex accent -->
+<!-- capital A, tilde -->
+<!-- capital A, dieresis or umlaut mark -->
+<!-- capital A, ring -->
+<!-- capital AE diphthong (ligature) -->
+<!-- capital C, cedilla -->
+<!-- capital E, grave accent -->
+<!-- capital E, acute accent -->
+<!-- capital E, circumflex accent -->
+<!-- capital E, dieresis or umlaut mark -->
+<!-- capital I, grave accent -->
+<!-- capital I, acute accent -->
+<!-- capital I, circumflex accent -->
+<!-- capital I, dieresis or umlaut mark -->
+<!-- capital Eth, Icelandic -->
+<!-- capital N, tilde -->
+<!-- capital O, grave accent -->
+<!-- capital O, acute accent -->
+<!-- capital O, circumflex accent -->
+<!-- capital O, tilde -->
+<!-- capital O, dieresis or umlaut mark -->
+<!-- capital O, slash -->
+<!-- capital U, grave accent -->
+<!-- capital U, acute accent -->
+<!-- capital U, circumflex accent -->
+<!-- capital U, dieresis or umlaut mark -->
+<!-- capital Y, acute accent -->
+<!-- capital THORN, Icelandic -->
+<!-- small sharp s, German (sz ligature) -->
+<!-- small a, grave accent -->
+<!-- small a, acute accent -->
+<!-- small a, circumflex accent -->
+<!-- small a, tilde -->
+<!-- small a, dieresis or umlaut mark -->
+<!-- small a, ring -->
+<!-- small ae diphthong (ligature) -->
+<!-- small c, cedilla -->
+<!-- small e, grave accent -->
+<!-- small e, acute accent -->
+<!-- small e, circumflex accent -->
+<!-- small e, dieresis or umlaut mark -->
+<!-- small i, grave accent -->
+<!-- small i, acute accent -->
+<!-- small i, circumflex accent -->
+<!-- small i, dieresis or umlaut mark -->
+<!-- small eth, Icelandic -->
+<!-- small n, tilde -->
+<!-- small o, grave accent -->
+<!-- small o, acute accent -->
+<!-- small o, circumflex accent -->
+<!-- small o, tilde -->
+<!-- small o, dieresis or umlaut mark -->
+<!-- small o, slash -->
+<!-- small u, grave accent -->
+<!-- small u, acute accent -->
+<!-- small u, circumflex accent -->
+<!-- small u, dieresis or umlaut mark -->
+<!-- small y, acute accent -->
+<!-- small thorn, Icelandic -->
+<!-- small y, dieresis or umlaut mark -->
